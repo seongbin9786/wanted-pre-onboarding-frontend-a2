@@ -6,7 +6,7 @@ export interface TravelItemType {
   name: string;
   mainImage: string;
   description: string;
-  spaceCategory: string;
+  spaceCategory: '서울' | '강원' | '부산' | '대구' | '제주';
   price: number;
   maximumPurchases: number;
   registrationDate: string;
@@ -17,6 +17,9 @@ const API_URL =
 
 // async fn
 async function fetchTravelListApi(): Promise<TravelItemType[]> {
+  await new Promise((resolve) => {
+    setTimeout(() => resolve(null), 1000);
+  });
   const response = await axios.get(API_URL);
   return response.data;
 }
